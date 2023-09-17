@@ -14,11 +14,9 @@ use Terpz710\Hub as Main;
 
 class SetHubCommand extends Command {
 
-    private $plugin;
     private $worldManager;
 
-    public function __construct(Main $plugin, WorldManager $worldManager) {
-        $this->plugin = $plugin;
+    public function __construct(WorldManager $worldManager) {
         $this->worldManager = $worldManager;
         parent::__construct(
             "sethub",
