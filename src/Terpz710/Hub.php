@@ -20,7 +20,7 @@ class Hub extends PluginBase implements Listener {
     public function onEnable() : void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getServer()->getCommandMap()->register("hub", new HubCommand());
-        $this->getServer()->getCommandMap()->register("sethub", new SetHubCommand($this->getWorldManager()));
+        $this->getServer()->getCommandMap()->register("sethub", new SetHubCommand());
         $this->getWorldManager()->getDefaultWorld();
     }
 
