@@ -3,10 +3,13 @@ main: Terpz710\Hub
 version: 1.0.0
 api: 5.0.0
 author: Terpz710
-description: Adds /hub and /sethub
+description: Adds /hub, /sethub, and /deletehub
 permissions:
   sethub.command:
     description: Allows players to use the /sethub command
+    default: op
+  deletehub.command:
+    description: Allows players to use the /deletehub command
     default: op
   hub.command:
     description: Allows players to use the /hub command
