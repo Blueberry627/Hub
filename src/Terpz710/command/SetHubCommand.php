@@ -14,9 +14,11 @@ use Terpz710\Hub as Main;
 
 class SetHubCommand extends Command {
 
+    private $plugin;
     private $worldManager;
 
-    public function __construct(WorldManager $worldManager) {
+    public function __construct(Main $plugin, WorldManager $worldManager) {
+        $this->plugin = $plugin;
         $this->worldManager = $worldManager;
         parent::__construct(
             "sethub",
@@ -25,10 +27,6 @@ class SetHubCommand extends Command {
             ["setlobby", "setspawn"]
         );
         $this->setPermission("sethub.command");
-    }
-
-    public function getPlugin() : Main {
-        return $this->plugin;
     }
 
     public function execute(CommandSender $sender, string $label, array $args) {
