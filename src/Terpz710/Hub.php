@@ -11,7 +11,7 @@ use pocketmine\utils\TextFormat;
 use pocketmine\world\WorldManager;
 use Terpz710\command\HubCommand;
 use Terpz710\command\SetHubCommand;
-use Terpz710\command\CommandDeleteHub;
+use Terpz710\command\DeleteHubCommand;
 
 class Hub extends PluginBase implements Listener {
 
@@ -21,7 +21,7 @@ class Hub extends PluginBase implements Listener {
     public function onEnable() : void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getServer()->getCommandMap()->register("hub", new HubCommand());
-        $this->getServer()->getCommandMap()->register("sethub", new SetHubCommand($this->getWorldManager()));
+        $this->getServer()->getCommandMap()->register("sethub", new SetHubCommand());
         $this->getServer()->getCommandMap()->register("deletehub", new CommandDeleteHub());
         $this->getWorldManager()->getDefaultWorld();
     }
