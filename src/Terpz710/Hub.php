@@ -25,7 +25,7 @@ class Hub extends PluginBase implements Listener {
     private WorldManager $worldManager;
     public function onEnable() : void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->getServer()->getCommandMap()->register("hub", new HubCommand($this);
+        $this->getServer()->getCommandMap()->register("hub", new HubCommand($this));
         $this->getServer()->getCommandMap()->register("sethub", new SetHubCommand($this, $this->worldManager));
 
         $this->worldManager = new WorldManager($this->getServer(), $this->getDataFolder(), $this->getServer()->getWorldManager());
