@@ -14,7 +14,7 @@ class HubCommand extends Command {
 
     private $plugin;
 
-    public function __construct(Main $plugin) {
+    public function __construct(Hub $plugin) {
         parent::__construct(
             "hub",
             "Teleport to hub",
@@ -22,7 +22,6 @@ class HubCommand extends Command {
             ["lobby", "spawn"]
         );
         $this->setPermission("hub.command");
-        $this->plugin = $plugin;
     }
 
     public function execute(CommandSender $sender, string $label, array $args) {
