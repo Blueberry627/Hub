@@ -10,7 +10,7 @@ use pocketmine\utils\TextFormat;
 use pocketmine\player\Player;
 use Terpz710\Hub as Main;
 
-class CommandDeleteHub extends Command {
+class DeleteHubCommand extends Command {
 
     public function __construct() {
         parent::__construct(
