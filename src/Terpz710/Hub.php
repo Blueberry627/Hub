@@ -2,48 +2,38 @@
 
 declare(strict_types=1);
 
-namespace Terpz710\command;
+namespace Terpz710;
 
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
+use pocketmine\event\player\PlayerDeathEvent;
+use pocketmine\event\Listener;
+use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
-use pocketmine\player\Player;
-use pocketmine\math\Vector3;
-use Terpz710\Hub as Main;
+use pocketmine\world\WorldManager;
+use Terpz710\command\HubCommand;
+use Terpz710\command\SetHubCommand;
 
-class SetHubCommand extends Command {
+class Hub extends PluginBase implements Listener {
 
-    public function __construct() {
-        parent::__construct(
-            "sethub",
-            "Set the hub",
-            "/sethub <x> <y> <z>",
-            ["setlobby", "setspawn"]
-        );
-        $this->setPermission("sethub.command");
+    /** @var WorldManager */
+    private $worldManager;
+
+    public function onEnable() : void {
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+        $this->getServer()->getCommandMap()->register("hub", new HubCommand());
+        $this->getServer()->getCommandMap()->register("sethub", new SetHubCommand($this->getWorldManager()));
+        $this->getWorldManager()->getDefaultWorld();
     }
 
-    public function execute(CommandSender $sender, string $label, array $args) {
-        if (!$this->testPermission($sender)) {
-            return;
+    public function onPlayerDeath(PlayerDeathEvent $event) {
+        $player = $event->getPlayer();
+        $spawnLocation = $player->getWorld()->getSpawnLocation();
+        $player->teleport($spawnLocation);
+    }
+
+    public function getWorldManager(): WorldManager {
+        if ($this->worldManager === null) {
+            $this->worldManager = $this->getServer()->getWorldManager();
         }
-
-        if ($sender instanceof Player) {
-            if (isset($args[0]) && isset($args[1]) && isset($args[2])) {
-                $x = (float)$args[0];
-                $y = (float)$args[1];
-                $z = (float)$args[2];
-
-                $pos = new Vector3($x, $y, $z);
-                $pos->round();
-
-                $sender->getWorld()->setSpawnLocation($pos);
-                $sender->sendMessage(TextFormat::GREEN . "Hub location set to ($x, $y, $z)");
-            } else {
-                $sender->sendMessage(TextFormat::RED . "Please enter all three coordinates");
-            }
-        } else {
-            $sender->sendMessage(TextFormat::RED . "This command can only be used by players");
-        }
+        return $this->worldManager;
     }
 }
