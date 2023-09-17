@@ -6,7 +6,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\plugin\Plugin;
 use pocketmine\utils\TextFormat;
-use pocketmine\Player\Player;
+use pocketmine\player\Player;
 use Terpz710\Hub as Main;
 use pocketmine\world\WorldManager;
 
