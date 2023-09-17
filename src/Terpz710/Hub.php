@@ -14,6 +14,9 @@ use Terpz710\command\SetHubCommand;
 
 class Hub extends PluginBase implements Listener {
 
+    /** @var WorldManager */
+    private $worldManager;
+
     public function onEnable() : void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getServer()->getCommandMap()->register("hub", new HubCommand());
@@ -28,6 +31,9 @@ class Hub extends PluginBase implements Listener {
     }
 
     public function getWorldManager(): WorldManager {
-        return $this->getServer()->getWorldManager();
+        if ($this->worldManager === null) {
+            $this->worldManager = $this->getServer()->getWorldManager();
+        }
+        return $this->worldManager;
     }
 }
