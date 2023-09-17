@@ -14,7 +14,7 @@ use pocketmine\math\Vector3;
 use pocketmine\permission\Permission;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\Server;
 use pocketmine\world\WorldManager;
 use Terpz710\command\HubCommand;
