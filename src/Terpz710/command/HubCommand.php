@@ -12,7 +12,7 @@ use Terpz710\Hub;
 
 class HubCommand extends Command {
 
-    public function __construct(Hub $plugin) {
+    public function __construct() {
         parent::__construct(
             "hub",
             "Teleport to hub",
