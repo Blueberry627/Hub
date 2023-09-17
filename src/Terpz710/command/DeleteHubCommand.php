@@ -8,6 +8,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat;
 use pocketmine\player\Player;
+use Terpz710\Hub as Main;
 
 class CommandDeleteHub extends Command {
 
