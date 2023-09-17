@@ -8,18 +8,12 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat;
 use pocketmine\player\Player;
-use pocketmine\world\WorldManager;
 use pocketmine\math\Vector3;
 use Terpz710\Hub as Main;
 
 class SetHubCommand extends Command {
 
-    private $plugin;
-    private $worldManager;
-
-    public function __construct(Main $plugin, WorldManager $worldManager) {
-        $this->plugin = $plugin;
-        $this->worldManager = $worldManager;
+    public function __construct() {
         parent::__construct(
             "sethub",
             "Set the hub",
