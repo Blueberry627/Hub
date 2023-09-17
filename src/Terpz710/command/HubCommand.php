@@ -6,16 +6,15 @@ namespace Terpz710\command;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\plugin\Plugin;
 use pocketmine\utils\TextFormat;
 use pocketmine\player\Player;
+use Terpz710\Hub;
 
 class HubCommand extends Command {
 
     private $plugin;
 
     public function __construct(Main $plugin) {
-        $this->plugin = $plugin;
         parent::__construct(
             "hub",
             "Teleport to hub",
@@ -23,6 +22,7 @@ class HubCommand extends Command {
             ["lobby", "spawn"]
         );
         $this->setPermission("hub.command");
+        $this->plugin = $plugin;
     }
 
     public function execute(CommandSender $sender, string $label, array $args) {
