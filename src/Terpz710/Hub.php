@@ -22,7 +22,7 @@ class Hub extends PluginBase implements Listener {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getServer()->getCommandMap()->register("hub", new HubCommand());
         $this->getServer()->getCommandMap()->register("sethub", new SetHubCommand());
-        $this->getServer()->getCommandMap()->register("deletehub", new CommandDeleteHub());
+        $this->getServer()->getCommandMap()->register("deletehub", new DeleteHubCommand());
         $this->getWorldManager()->getDefaultWorld();
     }
 
