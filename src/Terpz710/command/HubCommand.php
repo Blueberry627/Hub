@@ -12,8 +12,6 @@ use Terpz710\Hub;
 
 class HubCommand extends Command {
 
-    private $plugin;
-
     public function __construct(Hub $plugin) {
         parent::__construct(
             "hub",
